@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+ 
+<style>
+  label {
+  display: inline-block;
+  width: 100px;
+  text-align: right;
+}
+</style>
+</head>
+
+<body class="bg-red-400">
+  <header>
+    <h1 class="flex justify-center fa-solid fa-cart-shopping m-4 p-4"> E-Shop Explorer Web Page</h1>
+  <nav >
+    <div class="bg-white text-black flex justify-between p-5">
+      <div class="flex gap-6">
+    <a href="#herosection" class="hover:underline fa-solid fa-house">Home</a>
+    <a href="./" class="hover:underline  fa-solid">shopping</a>
+    <a href="./" class="hover:underline  fa-solid">about us</a>
+    </div>
+    <div>
+     <input class="p-1 border border-black border-solid" type="search" name="search" id="search" placeholder="search"/>
+
+      </div>
+     </div>
+    </nav>
+    </header>
+
+    <section id="herosection" class="bg-[url('./download.jpg')] bg-cover h-[75vh] flex flex-col justify-center">
+
+    
+      <div class="p-4 text-xl ">
+        <h1 class="text-2xl">welcome to my website</h1>
+           <a class="text-white bg-black" href="/" >Explore Now</a>
+</div>
+ 
+      
+    </section>
+
+    <section id="audiosection" class="flex justify-center my-4">
+       <h3 class="text-2xl font-semibold mb-2"></h3>
+      <audio controls>
+        <source src="./Set1_Audio.mp3" type="audio/mpeg"/>
+        Your browser does not support
+      </audio>
+    </section>
+
+    <section id="videosection" class="flex justify-center my-4">
+      <video controls muted autoplay loop width="600px" height="500px">
+        <source src="./Set1_Video.mp4" type="video/mp4"/>
+        <track src="./sub.vtt" kind="subtitles" lang="en" label="english">
+      </video>
+    </section>
+<section id="form" class="flex justify-center">
+    <form>
+      <p>
+        <label >Name:</label>
+        <input type="text" name="nm" placeholder="name"/><br>
+      </p>
+      <p>
+        <label>Email:</label>
+        <input type="email " name="em" placeholder="abc@gmail.com"/><br>
+
+      </p>
+      <p>
+        <label>Product :</label>
+        <input type="text" name="p" placeholder="Interested products"/><br>
+
+      </p>
+      <button class="bg-white hover:underline p-2 rounded w-30">submit</button>
+      
+    </form>
+    </section>
+
+
+  <div id="products" class="flex flex-wrap gap-6 px-4"></div>
+  <script src="script.js"></script>
+
+    <section class="flex justify-center my-8">
+<h1 class="text-2xl">WEB STORAGE</h1><br>
+   
+         <input class="border-2 border-black" id="user" type="text" name="user" />
+        <input class="border-2 border-black" id="product" type="text" name="product" />
+
+        <button class="border-2 border-black" onclick="setInBoth()">Set</button>
+    <button class="border-2 border-black" onclick="retrieveItem()">Retrieve</button>
+
+       <h1 id="userinfo" class="text-2xl"></h1>
+       <h1 id="sessioninfo" class="text-2xl"></h1>
+       <script>
+            function setInBoth()
+            {
+             localStorage.setItem("PRODUCT",document.getElementById("product").value);
+        sessionStorage.setItem("UserID",document.getElementById("user").value);
+
+            }
+
+              function retrieveItem()
+            {
+                  const value1= localStorage.getItem("PRODUCT");
+                const value2= sessionStorage.getItem("UserID");      
+              
+              document.getElementById("sessioninfo").innerText = "Welcome Back : " + value2;
+               document.getElementById("userinfo").innerText = "You were Interested: " + value1;
+            }
+
+        </script>
+        </section>
+
+        <section id="geolocation" class="flex justify-center my-8">
+          <h1 class="text-2xl my-4">GEOLOCATION</h1>
+       <h1 id="userlocation"></h1>
+       <button onClick = "getLocation()">Click here</button>
+       <script>
+        function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition, showError);
+      } else {
+        document.getElementById("userlocation").innerText = "Geolocation is not supported by this browser.";
+      }
+    }
+
+    function showPosition(position) {
+      const lat = position.coords.latitude;
+      const lon = position.coords.longitude;
+      document.getElementById("userlocation").innerText = `Latitude: ${lat}, Longitude: ${lon}`;
+    }
+
+    function showError(error) {
+      console.log(error);
+    }
+
+       
+    </script>
+
+    </section>
+    
